@@ -6,7 +6,6 @@ import 'package:my_guide/config/theme/app_colors.dart';
 import 'package:my_guide/presentation/screens/layOut/components/layOut_app_bar.dart';
 import 'package:my_guide/presentation/screens/layOut/home/components/home_item.dart';
 import 'package:my_guide/presentation/screens/layOut/home/components/home_list_item.dart';
-import 'package:my_guide/presentation/screens/notification/notification_screen.dart';
 import 'package:my_guide/presentation/widgets/custom_loading_indicator.dart';
 import 'package:my_guide/presentation/widgets/custom_text.dart';
 import 'package:my_guide/utils/app_extentions.dart';
@@ -41,10 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: LayOutAppBar(
         title: AppStrings.discover,
         trailing: InkWell(
-          onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const NotificationScreen())),
+          onTap: (){},
           child: Image.asset(
             AppIcons.notificationIcon,
             fit: BoxFit.fill,

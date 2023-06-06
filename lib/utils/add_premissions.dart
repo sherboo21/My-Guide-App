@@ -1,8 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:my_guide/data/dataSources/local/notification_helper.dart';
 
-import '../presentation/screens/notification/services.dart';
 
 // app Permission class //
 
@@ -40,17 +40,16 @@ class AppPermissions {
 
   // set Notification device setting function //
 
-  static void requestNotificationPermission() async {
-    NotificationSettings settings =
-        await NotificationServices().messaging.requestPermission(
-              alert: true,
-              announcement: true,
-              badge: true,
-              carPlay: true,
-              criticalAlert: true,
-              provisional: true,
-              sound: true,
-            );
+  void requestNotificationPermission() async {
+    NotificationSettings settings = await NotificationHelper().messaging.requestPermission(
+      alert: true,
+      announcement: true,
+      badge: true,
+      carPlay: true,
+      criticalAlert: true,
+      provisional: true,
+      sound: true,
+    );
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       debugPrint('user granted permission', wrapWidth: 100);
@@ -61,4 +60,5 @@ class AppPermissions {
       debugPrint('user denied permission', wrapWidth: 100);
     }
   }
+
 }

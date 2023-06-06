@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_guide/presentation/screens/notification/services.dart';
+import 'package:my_guide/data/dataSources/local/notification_helper.dart';
 import 'package:my_guide/presentation/screens/useYourLocation/cubit/location_cubit.dart';
 import 'package:my_guide/presentation/stateMangements/cubit/internet/internet_cubit.dart';
 import 'package:my_guide/presentation/stateMangements/cubit/internet/internet_state.dart';
@@ -14,6 +14,7 @@ import '../../../config/router/named_router.dart';
 import '../../../config/router/named_router_impl.dart';
 import '../../../config/theme/app_colors.dart';
 import '../../../data/dataSources/local/shared_prefrences.dart';
+import '../../../utils/add_premissions.dart';
 import '../../../utils/main_functions.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -47,7 +48,11 @@ class _SplashScreenState extends State<SplashScreen> {
     // context.read<LocationCubit>().sendLocation(
     //     lat: StartPrefs.getUserLatValue(), long: StartPrefs.getUserLongValue()
     // );
-    NotificationServices().requestNotificationPermission();
+    AppPermissions().requestNotificationPermission();
+    NotificationHelper().getDeviceToken().then((value) {
+      debugPrint(value, wrapWidth: 100);
+      debugPrint(StartPrefs.getFcmToken(), wrapWidth: 100);
+    });
     Timer(const Duration(seconds: 3), () {
       var mNamedNavigator = NamedNavigatorImpl();
       mNamedNavigator.push(screen, replace: true, clean: true);

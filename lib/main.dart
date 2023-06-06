@@ -10,11 +10,11 @@ import 'app/my_app.dart';
 import 'data/dataSources/local/shared_prefrences.dart';
 import 'data/dataSources/remote/dio.dart';
 
+
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 }
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
@@ -22,7 +22,6 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await DioHelper.init();
   await StartPrefs.init();
-  debugPrint(StartPrefs.getFcmToken(), wrapWidth: 100);
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

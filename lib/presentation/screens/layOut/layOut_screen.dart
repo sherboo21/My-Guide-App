@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_guide/config/theme/app_colors.dart';
+import 'package:my_guide/data/dataSources/local/notification_helper.dart';
 import 'package:my_guide/presentation/screens/layOut/gps/gps_screen.dart';
 import 'package:my_guide/presentation/screens/layOut/home/home_screen.dart';
 import 'package:my_guide/presentation/screens/layOut/profile/profile_screen.dart';
@@ -18,13 +19,17 @@ class LayOutScreen extends StatefulWidget {
 }
 
 class _LayOutScreenState extends State<LayOutScreen> {
+  NotificationHelper notificationHelper = NotificationHelper();
   final _pageNavigation = [
     const HomeScreen(),
     const GpsScreen(),
     const AudioBookScreen(),
     const ProfileScreen(),
   ];
-
+@override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(

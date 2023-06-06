@@ -67,6 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               context: context,
               content: AppStrings.anErrorOccurred,
               color: AppColors.errorColor);
+          // StartPrefs.s
         } else if (state is UpdateProfileSuccessState) {
           customNotificationToast(
               context: context,
