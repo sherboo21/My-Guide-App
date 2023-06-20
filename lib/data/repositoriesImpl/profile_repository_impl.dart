@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:my_guide/data/dataSources/remote/app_services.dart';
 import 'package:my_guide/domain/models/profile.dart';
+import 'package:my_guide/utils/app_strings.dart';
 
+import '../../domain/models/relative_profile.dart';
 import '../../presentation/screens/layOut/profile/cubit/profile_state.dart';
 import '../dataSources/remote/dio.dart';
 
@@ -74,6 +76,29 @@ class ProfileRepositoryImpl {
     } catch (e) {
       debugPrint(e.toString(), wrapWidth: 100);
       emit(errorState);
+    }
+  }
+  // get relative profile repository Impl //
+
+  Future<dynamic>? getRelativeProfile({
+    required void Function(ProfileState) emit,
+  }) async {
+    emit(GetRelativeProfileLoadingState());
+    try {
+      Response? response = await DioHelper.getData(
+        url: AppServices.getRelativeProfileUrl,
+      );
+      if (response!.statusCode == 200) {
+        debugPrint(response.data.toString(), wrapWidth: 100);
+        emit(GetRelativeProfileSuccessState(response.data));
+        return RelativeProfileDataModel.fromJson(response.data);
+      } else {
+        emit(GetRelativeProfileErrorState(messageError: AppStrings.anErrorOccurred));
+      }
+      return response.data.toString();
+    } catch (e) {
+      debugPrint(e.toString(), wrapWidth: 100);
+      emit(GetRelativeProfileErrorState(messageError: e.toString()));
     }
   }
 }

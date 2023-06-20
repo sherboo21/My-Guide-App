@@ -45,9 +45,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // context.read<LocationCubit>().sendLocation(
-    //     lat: StartPrefs.getUserLatValue(), long: StartPrefs.getUserLongValue()
-    // );
+    AppPermissions.determinePosition();
+    context.read<LocationCubit>().sendLocation(
+        lat: StartPrefs.getUserLatValue(), long: StartPrefs.getUserLongValue()
+    );
     AppPermissions().requestNotificationPermission();
     NotificationHelper().getDeviceToken().then((value) {
       debugPrint(value, wrapWidth: 100);

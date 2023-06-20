@@ -25,6 +25,20 @@ class ProfileRepository {
       rethrow;
     }
   }
+  // get relative profile repository //
+
+  Future<dynamic> getRelativeProfile({
+    required emit,
+  }) async {
+    try {
+      dynamic data = await profileRepositoryImpl.getRelativeProfile(
+        emit: emit,
+      );
+      return data;
+    } catch (e) {
+      rethrow;
+    }
+  }
 
 // update profile repository //
 

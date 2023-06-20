@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:my_guide/data/dataSources/local/notification_helper.dart';
 
+import '../data/dataSources/local/shared_prefrences.dart';
+
 
 // app Permission class //
 
@@ -34,7 +36,8 @@ class AppPermissions {
     }
 
     Position position = await Geolocator.getCurrentPosition();
-
+    StartPrefs.setUserLatValue(position.latitude.toString());
+    StartPrefs.setUserLongValue(position.longitude.toString());
     return position;
   }
 

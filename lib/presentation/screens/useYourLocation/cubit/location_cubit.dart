@@ -20,8 +20,8 @@ class LocationCubit extends Cubit<LocationState> {
         lat: lat,
         long: long,
         emit: emit,
-        loadingState: LocationSuccessState(),
-        successState: LocationLoadingState(),
+        loadingState: LocationLoadingState(),
+        successState: LocationSuccessState(),
         errorState:
             LocationErrorState(messageError: AppStrings.anErrorOccurred));
   }

@@ -18,4 +18,5 @@ class AppServices {
   static String get scanBlindId => "scan";
 
   static String get sendLocationUrl => "location";
+  static String get getRelativeProfileUrl => "linkedProfile";
 }

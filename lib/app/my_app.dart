@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_guide/presentation/screens/splash/splash_screen.dart';
 import 'package:my_guide/presentation/stateMangements/bloc/multi_bloc_providers.dart';
 import 'package:my_guide/presentation/stateMangements/cubit/theme_cubit.dart';
-
 import '../config/router/named_router_impl.dart';
 
 class MyApp extends StatelessWidget {

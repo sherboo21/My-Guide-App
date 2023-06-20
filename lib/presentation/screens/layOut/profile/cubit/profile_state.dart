@@ -32,6 +32,27 @@ class GetProfileErrorState extends ProfileState {
   @override
   List<Object?> get props => [messageError];
 }
+// Get relative Profile State //
+
+class GetRelativeProfileLoadingState extends ProfileState {}
+
+class GetRelativeProfileSuccessState extends ProfileState {
+  final dynamic data;
+
+  const GetRelativeProfileSuccessState(this.data);
+
+  @override
+  List<Object?> get props => [data];
+}
+
+class GetRelativeProfileErrorState extends ProfileState {
+  final String messageError;
+
+  const GetRelativeProfileErrorState({required this.messageError});
+
+  @override
+  List<Object?> get props => [messageError];
+}
 
 // Update My Profile State //
 

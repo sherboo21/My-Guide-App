@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_guide/domain/models/profile.dart';
+import 'package:my_guide/domain/models/relative_profile.dart';
 import 'package:my_guide/domain/repositories/profile_repository.dart';
 import 'package:my_guide/presentation/screens/layOut/profile/cubit/profile_state.dart';
 
@@ -12,6 +13,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   // Data Model //
   ProfileDataModel profileDataModel = ProfileDataModel();
+  RelativeProfileDataModel relativeProfileDataModel = RelativeProfileDataModel();
 
   // get Profile cubit //
 
@@ -23,6 +25,12 @@ class ProfileCubit extends Cubit<ProfileState> {
             GetProfileSuccessState(profileDataModel.message.toString()),
         errorState:
             GetProfileErrorState(messageError: AppStrings.anErrorOccurred));
+  }
+  // get relative Profile cubit //
+
+  void getRelativeProfile() async {
+    relativeProfileDataModel = await profileRepository.getRelativeProfile(
+        emit: emit);
   }
 
   // update Profile cubit //

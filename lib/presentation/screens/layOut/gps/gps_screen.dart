@@ -29,12 +29,8 @@ class _GpsScreenState extends State<GpsScreen> {
     googleMapController.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
             target: LatLng(
-              StartPrefs.getUserTypeValue() == 'BLIND' ?
-                  position.latitude : widget.title!,
-                StartPrefs.getUserTypeValue() == 'BLIND' ?
-                position.longitude : widget.title!), zoom: 14)));
-    StartPrefs.setUserLatValue(position.latitude.toString());
-    StartPrefs.setUserLongValue(position.longitude.toString());
+                  position.latitude ,
+                position.longitude ), zoom: 14)));
     debugPrint(
         '--------------------${position.latitude.toString()}------------------',
         wrapWidth: 100);
